@@ -42,4 +42,23 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
 
     assert_equal id, json_response["id"]
   end
+
+  test "#create adds an additional link to to the database" do
+    assert_difference 'Link.count', 1 do
+      link = { title: "New Link", url: "http://zumba.com" }
+
+      post :create, link: link, format: :json
+    end
+  end
+
+  test "#create returns the new link" do
+    link = { title: "New Link", url: "http://zumba.com" }
+
+    post :create, link: link, format: :json
+
+    #require "pry"; binding.pry
+    assert_equal link[:title], json_response["title"]
+    assert_equal link[:url], json_response["url"]
+    assert_equal false, json_response["read"]
+  end
 end
