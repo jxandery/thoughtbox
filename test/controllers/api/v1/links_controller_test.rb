@@ -27,4 +27,19 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
       assert link["url"]
     end
   end
+
+  test "links controller responds to json" do
+    id = links(:one).id
+
+    get :show, id: id, format: :json
+    assert_response :success
+  end
+
+  test "#show responds with a particular link" do
+    id = links(:one).id
+
+    get :show, id: id, format: :json
+
+    assert_equal id, json_response["id"]
+  end
 end
