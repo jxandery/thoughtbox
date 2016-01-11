@@ -34,7 +34,6 @@ class BasicTemplateTest < ActionDispatch::IntegrationTest
 
   test "form has an input button" do
     visit root_path
-    save_and_open_page
     assert page.has_css? "form.new-link input[type='submit'].new-link-submit"
   end
 end
