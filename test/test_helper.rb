@@ -4,6 +4,12 @@ require 'rails/test_help'
 require 'minitest/pride'
 require 'capybara/rails'
 
+class ActionController::TestCase
+  def json_response
+    JSON.parse response.body
+  end
+end
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all

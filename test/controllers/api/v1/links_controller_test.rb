@@ -10,6 +10,6 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
   test 'index returns an array of records' do
     get :index, format: :json
 
-    assert_kind_of Array, response.body
+    assert_kind_of Array, json_response
   end
 end
