@@ -89,4 +89,13 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
 
     assert_equal "Updated Link", links(:one).title
   end
+
+  test "#update the read value of link" do
+    updated_content = { read: true }
+
+    put :update, id: links(:one), link: updated_content, format: :json
+    links(:one).reload
+
+    assert_equal true, links(:one).read
+  end
 end
