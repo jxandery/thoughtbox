@@ -23,7 +23,7 @@ class UserLoginTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?("Welcome, jack")
     assert page.has_content?("Links Index")
-    #assert_current_path(user_links_path(user))
+    assert_current_path(links_path)
   end
 end
 
