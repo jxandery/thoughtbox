@@ -8,9 +8,9 @@
   </head>
   <body>
 
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, :class => "flash #{key}") %>
-  <% end %>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, :class => "flash #{key}") %>
+    <% end %>
 
     <% if current_user %>
       Welcome, <%= current_user.email_address %>
