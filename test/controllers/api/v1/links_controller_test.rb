@@ -56,9 +56,28 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
 
     post :create, link: link, format: :json
 
-    #require "pry"; binding.pry
     assert_equal link[:title], json_response["title"]
     assert_equal link[:url], json_response["url"]
     assert_equal false, json_response["read"]
+  end
+
+  test "#create rejects links without a title" do
+    link = { url: 'http://cnn.com' }
+    number_of_links = Link.all.count
+
+    post :create, link: link, format: :json
+
+    assert_response 422
+    assert_includes json_response["errors"]["title"], "can't be blank"
+  end
+
+  test "#create rejects url without a url" do
+    link = { title: 'New Link' }
+    number_of_links = Link.all.count
+
+    post :create, link: link, format: :json
+
+    assert_response 422
+    assert_includes json_response["errors"]["url"], "can't be blank"
   end
 end
