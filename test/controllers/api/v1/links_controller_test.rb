@@ -107,4 +107,10 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
 
     #assert_response 422
   #end
+
+  test "#destroy removes an link" do
+    assert_difference 'Link.count', -1 do
+      delete :destroy, id: links(:one), format: :json
+    end
+  end
 end

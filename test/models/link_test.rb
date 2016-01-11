@@ -34,8 +34,9 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   #test "it is invalid with any other quality" do
-    #links(:one).read = 1
+  #links(:one).read = 1
 
-    #refute(links(:one).valid?)
+  #refute(links(:one).valid?)
   #end
+
 end
