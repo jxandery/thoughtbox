@@ -19,6 +19,7 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
+  include Rails.application.routes.url_helpers
 
   def teardown
     reset_session!
