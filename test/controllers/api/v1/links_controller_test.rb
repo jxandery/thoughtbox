@@ -98,4 +98,13 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
 
     assert_equal true, links(:one).read
   end
+
+  #test "#update rejects invalid read values" do
+    #updated_content = { read: "invalid" }
+
+    #put :update, id: links(:one), link: updated_content, format: :json
+    #links(:one).reload
+
+    #assert_response 422
+  #end
 end
