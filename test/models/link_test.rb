@@ -21,4 +21,16 @@ class LinkTest < ActiveSupport::TestCase
     refute(link.valid?)
   end
 
+  test "it is valid with a read value of true" do
+    links(:one).read = true
+
+    assert(links(:one).valid?)
+  end
+
+  test "it is valid with a read value of false" do
+    links(:one).read = false
+
+    assert(links(:one).valid?)
+  end
+
 end
