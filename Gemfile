@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'bcrypt'
 gem "validate_url"
+gem 'responders'
 
 group :development, :test do
   gem 'pry-rails'

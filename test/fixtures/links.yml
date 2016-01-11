@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  url: MyString
-  title: MyString
+  url: 'http://nytimes.com'
+  title: NY Times Article
+  read: false
 
 two:
-  url: MyString
-  title: MyString
+  url: 'http://cnn.com'
+  title: CNN Article
+  read: true
