@@ -6,7 +6,6 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     user = User.create(email_address: "jack", password: "password")
 
     visit login_path
-    save_and_open_page
     fill_in "Email address", with: user.email_address
     fill_in "Password", with: "password"
     click_button "Login"
