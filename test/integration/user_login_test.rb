@@ -13,3 +13,4 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Welcome, jack")
   end
 end
+
