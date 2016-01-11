@@ -16,4 +16,9 @@ class LinkTest < ActiveSupport::TestCase
     refute(link.valid?)
   end
 
+  test 'it should be invalid without a valid url' do
+    link = Link.new(title: 'title', url: 'asdfpoij')
+    refute(link.valid?)
+  end
+
 end
