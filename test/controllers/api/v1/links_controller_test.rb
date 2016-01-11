@@ -80,4 +80,13 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
     assert_response 422
     assert_includes json_response["errors"]["url"], "can't be blank"
   end
+
+  test "#update an link through the API" do
+    updated_content = { title: "Updated Link" }
+
+    put :update, id: links(:one), link: updated_content, format: :json
+    links(:one).reload
+
+    assert_equal "Updated Link", links(:one).title
+  end
 end
