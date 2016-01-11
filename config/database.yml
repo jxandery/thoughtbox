@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: thoughtbox_production
-  username: thoughtbox
+  email_address: thoughtbox
   password: <%= ENV['THOUGHTBOX_DATABASE_PASSWORD'] %>
