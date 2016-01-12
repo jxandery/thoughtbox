@@ -7,7 +7,7 @@ class LinkTest < ActiveSupport::TestCase
   end
 
   test 'it should be invalid without a title' do
-    link = Link.new(url: 'body')
+    link = Link.new(url: 'http://urlgalore.com')
     refute(link.valid?)
   end
 

@@ -29,7 +29,7 @@ class BasicTemplateTest < ActionDispatch::IntegrationTest
 
   test "form has an text input for a new link button" do
     visit root_path
-    assert page.has_css? "form.new-link input[type='text'].new-link-body"
+    assert page.has_css? "form.new-link input[type='text'].new-link-url"
   end
 
   test "form has an input button" do
