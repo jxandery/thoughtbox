@@ -1,15 +1,18 @@
-var newLinkTitle, newLinkUrl;
+var newLinkTitle, newLinkUrl, errorMessages;
 
 $(document).ready(function () {
   newLinkTitle = $('.new-link-title');
   newLinkUrl = $('.new-link-url');
+  errorMessages = $('.new-link-messages');
 
   $('.new-link-submit').on('click', createLink);
 });
 
 function createLink(event) {
   event.preventDefault();
-  LinkRepository.create(getNewLink());
+  clearErrors();
+  LinkRepository.create(getNewLink())
+                .fail(renderError);
 }
 
 function getNewLink() {
@@ -17,4 +20,12 @@ function getNewLink() {
     title: newLinkTitle.val(),
     url: newLinkUrl.val()
   };
+}
+
+function clearErrors() {
+  return errorMessages.html('');
+}
+
+function renderError() {
+  errorMessages.text('Title and/or url cannot be blank.');
 }

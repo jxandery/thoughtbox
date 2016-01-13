@@ -2,23 +2,43 @@ require 'test_helper'
 
 class InvalidLinkTest < ActionDispatch::IntegrationTest
 
-  #test "invalid link submission will result in error message" do
-    #user = User.create(email_address: "jack", password: "password")
+  def setup
+    super
+    use_javascript
+    visit root_path
+  end
 
-    #visit login_path
-    #fill_in "Email address", with: user.email_address
-    #fill_in "Password", with: "password"
-    #click_button "Login"
+  def teardown
+    super
+    reset_driver
+  end
 
-    #assert page.has_content?("Welcome, jack")
-    #assert_current_path(links_path)
+  test "it does not create a new link upon invalid form submission" do
+    assert_difference 'Link.count', 0 do
+      page.fill_in "link[title]", with: ''
+      page.fill_in "link[url]", with: ''
+      page.click_button "Submit Link"
+      wait_for_ajax
+    end
+  end
 
-    #fill_in "Title", with: 'link title'
-    #fill_in "URL", with: "http://cnn.com"
-    #click_button "Add Thought"
+  test "it shows an error saying that the title or url cannot be blank if missing" do
+    page.click_button "Submit Link"
 
-    #assert page.has_content?("link title")
-    #assert page.has_content?("http://cnn.com")
-    #assert_current_path(links_path)
-  #end
+    wait_for_ajax
+
+    assert page.find('.new-link-messages').has_content? 'Title and/or url cannot be blank.'
+  end
+
+  test "it removes the error on subsequent submissions" do
+    page.click_button "Submit Link"
+
+    wait_for_ajax
+
+    page.fill_in "link[title]", with: "Special Links"
+    page.fill_in "link[url]", with: "http://speciallinks.com"
+    page.click_button "Submit Link"
+
+    refute page.find('.new-link-messages').has_content? 'Title and/or url cannot be blank.'
+  end
 end
