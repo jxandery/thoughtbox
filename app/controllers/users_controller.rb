@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to api_v1_links_path
+      redirect_to links_path
     else
       flash[:alert] = "Invalid Email address"
       render 'new'
