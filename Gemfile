@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'bcrypt'
 gem "validate_url"
 gem 'responders'
+gem 'lodash-rails'
 
 group :development, :test do
   gem 'pry-rails'
