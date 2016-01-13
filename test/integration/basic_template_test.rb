@@ -7,9 +7,9 @@ class BasicTemplateTest < ActionDispatch::IntegrationTest
     assert_equal 200, page.status_code
   end
 
-  test "it has an <h1> tag with the content Thought Box" do
+  test "it has an <h1> tag with the content Links Index" do
     visit root_path
-    assert page.find("h1").has_content? "Thought Box"
+    assert page.find("h1").has_content? "Links Index"
   end
 
   test "it has an links container on the page" do

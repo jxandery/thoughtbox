@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email_address: params[:session][:email_address])
     if @user
       session[:user_id] = @user.id
-      redirect_to api_v1_links_path
+      redirect_to links_path
     else
       render 'new'
     end
