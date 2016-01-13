@@ -27,5 +27,5 @@ function clearErrors() {
 }
 
 function renderError() {
-  errorMessages.text('Title and/or url cannot be blank.');
+  errorMessages.text('Title and/or url cannot be blank or invalid.');
 }

@@ -27,7 +27,7 @@ class InvalidLinkTest < ActionDispatch::IntegrationTest
 
     wait_for_ajax
 
-    assert page.find('.new-link-messages').has_content? 'Title and/or url cannot be blank.'
+    assert page.find('.new-link-messages').has_content? 'Title and/or url cannot be blank or invalid.'
   end
 
   test "it removes the error on subsequent submissions" do
@@ -39,6 +39,6 @@ class InvalidLinkTest < ActionDispatch::IntegrationTest
     page.fill_in "link[url]", with: "http://speciallinks.com"
     page.click_button "Submit Link"
 
-    refute page.find('.new-link-messages').has_content? 'Title and/or url cannot be blank.'
+    refute page.find('.new-link-messages').has_content? 'Title and/or url cannot be blank or invalid.'
   end
 end
