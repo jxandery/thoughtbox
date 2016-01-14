@@ -12,7 +12,7 @@ class Api::V1::LinksController < ApplicationController
   def create
     link = Link.new(link_params)
     if link.save
-      respond_with(link, status: 201, location: api_v1_link_path(link))
+      render json: link, status: 201
     else
       render json: { errors: link.errors }, status: 422, location: api_v1_links_path
     end
