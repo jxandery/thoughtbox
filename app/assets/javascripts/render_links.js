@@ -3,7 +3,6 @@ var linksContainer;
 $(document).ready(function () {
   linksContainer = $('.links');
 
-  updateReadStatus();
   LinkRepository.all()
     // add function to send the link into a function constructor
     // create a new function that gives it prototype methods
@@ -11,6 +10,7 @@ $(document).ready(function () {
     // clicking on the method toggles true/false
     .then(convertLinks)
     .then(prependLinksToContainer);
+  updateReadStatus();
 
 });
 
@@ -32,11 +32,11 @@ function convertLinks(links) {
 }
 
 function updateReadStatus() {
-  $('#link-read-status').on('click', function(){
-    debugger;
+  $(document).on('click', '.link-read-status', function(event){
+    event.preventDefault();
     var $linkId = $(this).closest('.link').attr('data-id');
-    console.log($linkId);
-    //this.toggleStrikeThrough($linkId);
+    debugger;
+    this.toggleStrikeThrough($linkId);
     //this.updateReadStatusButton($linkId);
     //this.updateReadStatusRecord($linkId);
   });

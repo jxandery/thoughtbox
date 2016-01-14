@@ -11,6 +11,7 @@ Link.prototype.viewed = function() {
 }
 
 Link.prototype.toggleStrikeThrough = function() {
+  console.log('strike through');
 }
 
 Link.prototype.updateReadStatusButton = function() {
