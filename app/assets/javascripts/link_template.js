@@ -3,9 +3,9 @@ var linkTemplate = _.template(
     'data-id="<%= id %>">' +
     '<h2 class="link-title"><%= title %></h2>' +
     '<p class="link-url"><%= url %></p>' +
-    '<button class="link-read">read</button>' +
-    '<button class="link-unread">unread</button>' +
     '<button class="link-edit">Edit</button>' +
+    '<button class="link-read">Mark as Read</button>' +
+    '<button class="link-unread">Mark as Unread</button>' +
     '</div>' +
     '</div>'
     );

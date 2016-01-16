@@ -11,7 +11,7 @@ class UserLogoutTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?("Welcome, jack@example.com")
 
-    click_link "Logout"
+    click_link "Sign Out"
 
     refute page.has_content?("Welcome, jack@example.com")
   end
