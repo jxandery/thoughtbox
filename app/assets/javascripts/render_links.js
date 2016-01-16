@@ -77,7 +77,6 @@ function updateReadStatus() {
     var linkHTML        = $(this).closest('.link');
     var unread          = linkHTML.hasClass('read-false');
 
-    //unread ? updateReadStatusRecord(linkHTML, linkId, true) : updateReadStatusRecord(linkHTML, linkId, false);
     if (unread) { updateReadStatusRecord(linkHTML, linkId, true) };
   });
 }
@@ -102,15 +101,10 @@ function editLink() {
 }
 
 function updateLinkRecord(link) {
-  // when update form is clicked send an ajax request
-  // try a post request first and then a patch request using serialize
-  // on the success callback remove the form and return the result
-  //
   $(document).on('click', '.update-link', function(event){
     event.preventDefault();
     var $link            = $(this).closest('.link');
-      //var $linkId         = $(this).closest('.link').attr('data-id');
-      var $updatedTitle    = $('#edit-title').val();
+    var $updatedTitle    = $('#edit-title').val();
     var $updatedUrl      = $('#edit-url').val();
     var $updatedParams   = {
       link: {
@@ -130,38 +124,4 @@ function updateLinkRecord(link) {
     });
   });
 }
-
-//function updateReadStatusRecord() {
-//$('.link-read-status').on('click', function(){
-//var $postId = $(this).closest('.post').attr('data-id');
-//$('.hidden-forms' + $postId).slideToggle();
-//$('.update-idea').on('click', function(){
-//var editDescription = $('#edit-description').val();
-//var editBody        = $('#edit-body').val();
-//var editParams      = {
-//idea: {
-//title: editDescription,
-//body: editBody
-//}
-//}
-
-//var $post = $(this).closest('.post');
-
-//update post
-//$.ajax({
-//type: 'PUT',
-//url: '/ideas/' + $post.attr('data-id') + '.json',
-//data: editParams,
-//success: function(post){
-//var updatedDescription = $('#edit-description').val();
-//var updatedBody        = $('#edit-body').val();
-
-//$('.post[data-id="' + post.id + '"] p.title').html("Title: " + updatedDescription);
-//$('.post[data-id="' + post.id + '"] p.body').html("Body: " + updatedBody);
-
-//}
-//});
-//});
-//});
-//}
 
