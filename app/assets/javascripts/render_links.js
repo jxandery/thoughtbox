@@ -45,7 +45,10 @@ function updateReadStatusRecord(linkHTML, id, readStatus) {
     method:       'PATCH',
     url:          '/api/v1/links/' + id,
     data:         {link: {read: readStatus}},
-    success:      toggleReadStatus(linkHTML, readStatus)
+    success:      toggleReadStatus(linkHTML, readStatus),
+    error:        function(request, errorType, errorMessage) {
+      console.log('Error: ' + errorType + ' with message: ' + errorMessage);
+    }
   });
 }
 
