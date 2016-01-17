@@ -100,6 +100,27 @@ function editLink() {
   });
 }
 
+function invalidLinkFields(title, url) {
+  var valid_url_regex = /^([a-z][a-z0-9\*\-\.]*):\/\/(?:(?:(?:[\w\.\-\+!$&'\(\)*\+,;=]|%[0-9a-f]{2})+:)*(?:[\w\.\-\+%!$&'\(\)*\+,;=]|%[0-9a-f]{2})+@)?(?:(?:[a-z0-9\-\.]|%[0-9a-f]{2})+|(?:\[(?:[0-9a-f]{0,4}:)*(?:[0-9a-f]{0,4})\]))(?::[0-9]+)?(?:[\/|\?](?:[\w#!:\.\?\+=&@!$'~*,;\/\(\)\[\]\-]|%[0-9a-f]{2})*)?$/;
+  return (title === '') || (url.match(valid_url_regex) === null);
+}
+
+function sendErrorMessage() {
+  alert('Title and URL can not be blank or invalid');
+}
+
+function sendUpdatedInfo(data, link) {
+  $.ajax({
+    method:       'PATCH',
+    url:          '/api/v1/links/' + link.attr('data-id'),
+    data:         data,
+    success:      updateLink(data.link, link),
+    error:        function(request, errorType, errorMessage) {
+      console.log('Error: ' + errorType + ' with message: ' + errorMessage);
+    }
+  });
+};
+
 function updateLinkRecord(link) {
   $(document).on('click', '.update-link', function(event){
     event.preventDefault();
@@ -113,15 +134,7 @@ function updateLinkRecord(link) {
       }
     };
 
-    $.ajax({
-      method:       'PATCH',
-      url:          '/api/v1/links/' + $link.attr('data-id'),
-      data:         $updatedParams,
-      success:      updateLink($updatedParams.link, $link),
-      error:        function(request, errorType, errorMessage) {
-        console.log('Error: ' + errorType + ' with message: ' + errorMessage);
-      }
-    });
+    invalidLinkFields($updatedTitle, $updatedUrl) ? sendErrorMessage() : sendUpdatedInfo($updatedParams, $link);
   });
 }
 
