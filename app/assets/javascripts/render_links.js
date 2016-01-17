@@ -48,10 +48,13 @@ function convertLinks(links) {
 
 function toggleReadStatusClassTrue(linkHTML) {
   linkHTML.removeClass('read-false').addClass('read-true');
+  linkHTML.find("button.link-read").replaceWith("<button class='link-unread'>Mark as Unread</button>");
 }
 
 function toggleReadStatusClassFalse(linkHTML) {
   linkHTML.removeClass('read-true').addClass('read-false');
+  debugger;
+  linkHTML.find("button.link-unread").replaceWith("<button class='link-read'>Mark as Read</button>");
 }
 
 function toggleReadStatus(linkHTML, readStatus) {

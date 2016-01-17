@@ -4,10 +4,13 @@ var linkTemplate = _.template(
     '<h2 class="link-title"><%= title %></h2>' +
     '<p class="link-url"><%= url %></p>' +
     '<button class="link-edit">Edit</button>' +
-    '<button class="link-read">Mark as Read</button>' +
-    '<button class="link-unread">Mark as Unread</button>' +
-    '</div>' +
-    '</div>'
+    '<% if(true){ %> <button class="link-read">Mark as Read</button>' +
+      '<% } else{ %> <button class="link-unread">Mark as Unread</button><% } %>' +
+      '</div>' +
+      '</div>'
     );
 
+//'<%if (<%= read %>) { %> <% } %>'
+//'<button class="link-read">Mark as Read</button>' +
+//'<button class="link-unread">Mark as Unread</button>' +
 
