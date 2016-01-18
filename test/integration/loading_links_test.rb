@@ -3,13 +3,11 @@ require 'test_helper'
 class LoadingLinksTest < ActionDispatch::IntegrationTest
 
   def setup
-    super
     use_javascript
-    visit root_path
+    user_login
   end
 
   def teardown
-    super
     reset_driver
   end
 

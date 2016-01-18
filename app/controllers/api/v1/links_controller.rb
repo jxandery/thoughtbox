@@ -2,7 +2,7 @@ class Api::V1::LinksController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    respond_with Link.all
+    respond_with Link.where(user_id: current_user.id)
   end
 
   def show
@@ -10,7 +10,7 @@ class Api::V1::LinksController < ApplicationController
   end
 
   def create
-    link = Link.new(link_params)
+    link = current_user.links.create(link_params)
     if link.save
       render json: link, status: 201
     else

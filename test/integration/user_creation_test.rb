@@ -13,7 +13,7 @@ class UserCreationTest < ActionDispatch::IntegrationTest
   end
 
   test "user email must be unique" do
-    user = User.create(email_address: "jack", password: "password")
+    user = User.create(email_address: "justin@example.com", password: "password")
 
     visit new_user_path
     fill_in "Email address", with: user.email_address

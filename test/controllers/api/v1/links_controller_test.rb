@@ -2,6 +2,10 @@ require 'test_helper'
 
 class Api::V1::LinksControllerTest < ActionController::TestCase
 
+  def setup
+    user_login
+  end
+
   test "controller responds to json" do
     get :index, format: :json
     assert_response :success

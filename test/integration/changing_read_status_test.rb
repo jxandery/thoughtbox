@@ -4,6 +4,7 @@ class ChangingReadStatusTest < ActionDispatch::IntegrationTest
 
   def setup
     use_javascript
+    user_login
   end
 
   def teardown
@@ -11,15 +12,10 @@ class ChangingReadStatusTest < ActionDispatch::IntegrationTest
   end
 
   test "clicking read button should strike through link and toggle to read" do
-    visit root_path
-    cnn = Link.find_by(url: 'http://cnn.com')
-
-    save_and_open_page
+    cnn = Link.create(title: 'cnn', url: 'http://cnn.com')
 
     within(".read-true") do
       click_on("read")
     end
-
-    save_and_open_page
   end
 end

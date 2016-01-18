@@ -1,8 +1,10 @@
+require 'test_helper'
+
 class CreatingLinksTest < ActionDispatch::IntegrationTest
 
   def setup
     use_javascript
-    visit root_path
+    user_login
   end
 
   def teardown

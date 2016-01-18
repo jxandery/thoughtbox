@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'sessions/new'
 
-  root to: 'links#index'
+  root to: 'sessions#new'
 
   resources :users, only: [:new, :create, :show]
   resources :links, only: [:index]

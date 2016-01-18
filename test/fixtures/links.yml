@@ -4,8 +4,11 @@ one:
   url: 'http://nytimes.com'
   title: NY Times Article
   read: false
+  user_id: 1
 
 two:
   url: 'http://cnn.com'
   title: CNN Article
   read: true
+  user_id: 1
+

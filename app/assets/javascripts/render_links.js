@@ -134,7 +134,7 @@ function updateLinkRecord(link) {
       }
     };
 
-    invalidLinkFields($updatedTitle, $updatedUrl) ? sendErrorMessage() : sendUpdatedInfo($updatedParams, $link);
+    invalidLinkFields($updatedTitle, $updatedUrl) ? renderError() : sendUpdatedInfo($updatedParams, $link);
   });
 }
 
