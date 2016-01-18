@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to links_path
     else
-      flash[:alert] = "Invalid Email address"
+      flash[:alert] = "Invalid Email address or password"
       render 'new'
     end
   end
@@ -21,6 +21,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email_address, :password)
+    params.require(:user).permit(:email_address, :password, :password_confirmation)
   end
 end
