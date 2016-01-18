@@ -14,6 +14,8 @@ function createLink(event) {
   LinkRepository.create(getNewLink())
     .then(prependLinkToContainer)
     .fail(renderError);
+  newLinkTitle.val('');
+  newLinkUrl.val('');
 }
 
 function getNewLink() {
