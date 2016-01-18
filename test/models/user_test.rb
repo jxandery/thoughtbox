@@ -7,10 +7,10 @@ class UserTest < ActiveSupport::TestCase
     refute(user_without_email_or_password.valid?)
   end
 
-  #test 'it should be invalid without a title' do
-    #link = Link.new(url: 'http://urlgalore.com')
-    #refute(link.valid?)
-  #end
+  test 'it should be invalid without an email' do
+    user = User.new(password: 'password', password_confirmation: 'password')
+    refute(user.valid?)
+  end
 
   #test 'it should be invalid without a url' do
     #link = Link.new(title: 'title')
