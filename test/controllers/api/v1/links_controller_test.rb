@@ -33,14 +33,14 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
   end
 
   test "links controller responds to json" do
-    id = links(:one).id
+    id = Link.first.id
 
     get :show, id: id, format: :json
     assert_response :success
   end
 
   test "#show responds with a particular link" do
-    id = links(:one).id
+    id = Link.first.id
 
     get :show, id: id, format: :json
 
@@ -88,33 +88,24 @@ class Api::V1::LinksControllerTest < ActionController::TestCase
   test "#update an link through the API" do
     updated_content = { title: "Updated Link" }
 
-    put :update, id: links(:one), link: updated_content, format: :json
-    links(:one).reload
+    put :update, id: Link.first, link: updated_content, format: :json
+    Link.first.reload
 
-    assert_equal "Updated Link", links(:one).title
+    assert_equal "Updated Link", Link.first.title
   end
 
   test "#update the read value of link" do
     updated_content = { read: true }
 
-    put :update, id: links(:one), link: updated_content, format: :json
-    links(:one).reload
+    put :update, id: Link.first, link: updated_content, format: :json
+    Link.first.reload
 
-    assert_equal true, links(:one).read
+    assert_equal true, Link.first.read
   end
-
-  #test "#update rejects invalid read values" do
-    #updated_content = { read: "invalid" }
-
-    #put :update, id: links(:one), link: updated_content, format: :json
-    #links(:one).reload
-
-    #assert_response 422
-  #end
 
   test "#destroy removes an link" do
     assert_difference 'Link.count', -1 do
-      delete :destroy, id: links(:one), format: :json
+      delete :destroy, id: Link.first, format: :json
     end
   end
 end

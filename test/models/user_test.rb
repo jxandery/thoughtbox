@@ -1,5 +1,4 @@
-#require 'test_helper'
-require './test/test_helper'
+require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test 'it should be invalid without an email and password' do
@@ -12,13 +11,8 @@ class UserTest < ActiveSupport::TestCase
     refute(user.valid?)
   end
 
-  #test 'it should be invalid without a url' do
-    #link = Link.new(title: 'title')
-    #refute(link.valid?)
-  #end
-
-  #test 'it should be invalid without a valid url' do
-    #link = Link.new(title: 'title', url: 'asdfpoij')
-    #refute(link.valid?)
-  #end
+  test 'it should be invalid without password' do
+    user = User.new(email_address: 'simple@example.com', password_confirmation: 'password')
+    refute(user.valid?)
+  end
 end

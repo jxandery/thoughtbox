@@ -13,6 +13,7 @@ $(document).ready(function () {
   sortRead();
   sortUnread();
   sortABC();
+  showAll();
 });
 
 

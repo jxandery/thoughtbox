@@ -1,4 +1,5 @@
-require 'test_helper'
+require './test/test_helper'
+#require 'test_helper'
 
 class CreatingLinksTest < ActionDispatch::IntegrationTest
 
@@ -12,7 +13,6 @@ class CreatingLinksTest < ActionDispatch::IntegrationTest
   end
 
   test "it should load all of the links with an .link div" do
-    wait_for_ajax
     within :css, '.links' do
       assert_equal Link.count, page.find_all('.link').count
     end

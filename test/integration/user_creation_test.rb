@@ -4,12 +4,12 @@ class UserCreationTest < ActionDispatch::IntegrationTest
 
   test 'a user can be created' do
     visit new_user_path
-    fill_in "Email address", with: "jack"
+    fill_in "Email address", with: "jack@example.com"
     fill_in "Password", with: "password"
     fill_in "Password confirmation", with: "password"
     click_button "Create Account"
 
-    assert page.has_content?("Welcome, jack")
+    assert page.has_content?("Welcome, jack@example.com")
   end
 
   test "user email must be unique" do

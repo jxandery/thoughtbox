@@ -17,6 +17,13 @@ class ActionController::TestCase
   def user_login
     user = User.create(email_address: "new_user@example.com", password: "password")
     session[:user_id] = user.id
+
+    create_links(user)
+  end
+
+  def create_links(user)
+    user.links.create(url: 'http://usatoday.com', title: 'usa today')
+    user.links.create(url: 'http://wapo.com', title: 'washington post')
   end
 
 end
@@ -51,6 +58,13 @@ class ActionDispatch::IntegrationTest
     fill_in "Email address", with: user.email_address
     fill_in "Password", with: "password"
     click_button "Login"
+
+    create_links(user)
+  end
+
+  def create_links(user)
+    user.links.create(url: 'http://usatoday.com', title: 'usa today')
+    user.links.create(url: 'http://wapo.com', title: 'washington post')
   end
 
   def use_javascript
