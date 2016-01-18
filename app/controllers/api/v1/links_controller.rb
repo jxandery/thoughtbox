@@ -2,7 +2,7 @@ class Api::V1::LinksController < ApplicationController
   respond_to :html, :json, :xml
 
   def index
-    respond_with Link.where(user_id: current_user.id)
+    respond_with Link.where(user_id: current_user.id).order(created_at: :asc)
   end
 
   def show
