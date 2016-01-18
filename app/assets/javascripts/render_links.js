@@ -10,7 +10,23 @@ $(document).ready(function () {
   updateUnreadStatus();
   editLink();
   searchLinks();
+  sortRead();
+  sortUnread();
 });
+
+function sortRead() {
+  $(document).on('click', '.read-link', function(event){
+    $('.read-false').hide();
+    $('.read-true').show();
+  });
+}
+
+function sortUnread() {
+  $(document).on('click', '.unread-link', function(event){
+    $('.read-false').show();
+    $('.read-true').hide();
+  });
+}
 
 function searchLinks() {
   $('#filter').keyup(function(){
