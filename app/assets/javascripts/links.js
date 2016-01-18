@@ -4,3 +4,12 @@ function Link(data) {
   this.url    = data.url;
   this.read   = data.read;
 }
+
+function convertLink(link) {
+  return new Link(link);
+}
+
+function convertLinks(links) {
+  return links.map(convertLink);
+}
+
