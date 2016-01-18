@@ -28,3 +28,9 @@ function sortABC(){
   });
 }
 
+function showAll() {
+  $(document).on('click', '.all-links', function(event){
+    $('.link').show();
+  });
+}
+
