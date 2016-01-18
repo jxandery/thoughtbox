@@ -9,7 +9,21 @@ $(document).ready(function () {
   updateReadStatus();
   updateUnreadStatus();
   editLink();
+  searchLinks();
 });
+
+function searchLinks() {
+  $('#filter').keyup(function(){
+    var filter = $(this).val();
+    $('.links h2').each(function() {
+      if($(this).text().search(new RegExp(filter, 'i')) < 0) {
+        $(this).closest('.link').fadeOut();
+      } else {
+        $(this).closest('.link').show();
+      }
+    });
+  });
+}
 
 var editForm =  "<div class='edit-form'><div class='row'><div class='col-sm-4'><h6>Edit Title</h6>"
 + "<input class='form-control' type='text' id='edit-title'></div></div><div class='row'><div class='col-sm-8'>"
