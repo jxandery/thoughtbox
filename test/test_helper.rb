@@ -15,7 +15,7 @@ class ActionController::TestCase
   end
 
   def user_login
-    user = User.create(email_address: "new_user@example.com", password: "password")
+    user = User.create!(email_address: "new_user@example.com", password: "password")
     session[:user_id] = user.id
 
     create_links(user)
@@ -52,7 +52,7 @@ class ActionDispatch::IntegrationTest
   end
 
   def user_login
-    user = User.create(email_address: "jack@example.com", password: "password")
+    user = User.create_with(password: "password").find_or_create_by(email_address: "second_new_user@example.com")
 
     visit login_path
     fill_in "Email address", with: user.email_address
