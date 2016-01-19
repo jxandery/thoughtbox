@@ -20,6 +20,7 @@ Things you may want to cover:
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+you can visit the production version at: [https://polar-bastion-5222.herokuapp.com/] (https://polar-bastion-5222.herokuapp.com/)
 
 * ...
 
